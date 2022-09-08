@@ -7,7 +7,6 @@ import 'dart:math' as math;
 
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 typedef GetStoreVersionAndUrl = Future<StoreVersionAndUrl?> Function(String packageName);
 typedef ShowUpdateDialog = void Function(BuildContext context, FlutterCheckVersionApp versionCheck);
@@ -94,8 +93,8 @@ class FlutterCheckVersionApp {
   /// launch store for update
   Future launchStore() async {
     final url = storeUrl!;
-    if (await canLaunchUrlString(url)) {
-      await canLaunchUrlString(url);
+    if (await canLaunch(url)) {
+      await launch(url);
     } else {
       throw 'Could not launch $url';
     }
